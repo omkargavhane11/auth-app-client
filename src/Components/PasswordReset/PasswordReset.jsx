@@ -12,6 +12,8 @@ export default function PasswordReset() {
   const [reEnterPassword,setRenterPassword] = useState("");
   const [uniqueURL,setUniqueURL] = useState(params.uniqueURL);
   const [isLinkValid,setIslinkValid] = useState(true);
+  const [passAlert,setPassAlert] = useState(false);
+  const [isPasswordUpdate,setIsPasswordUpdated] = useState(false);
 
   useEffect(() => {
     async function checkLink(){
@@ -32,9 +34,19 @@ export default function PasswordReset() {
     checkLink();
   }, [uniqueURL]);
 
-  const handleUpdatePassword =async()=>{
+  const handleUpdatePassword =async(e)=>{
+    e.preventDefault();
     try{
-      await axios.put(`https://auth-app-37.herokuapp.com/user/password-reset/${uniqueURL}`,password)
+      if(password===reEnterPassword){
+        const update = await axios.put(`https://auth-app-37.herokuapp.com/user/password-reset/${uniqueURL}`,{
+          password:password
+        })
+        if(update.data.msg === "password updated successfully"){
+          setIsPasswordUpdated(true)
+        }
+      }else{
+        setPassAlert(true);
+      }
     }catch(err){
       console.log(err.message);
     }
@@ -44,8 +56,9 @@ export default function PasswordReset() {
 
     <div className="parentContainer">
       <div className="childContainer">
-    {isLinkValid ? (
-      <form className="loginForm p-2">
+        {!isPasswordUpdate? (
+    isLinkValid ? (
+    <form className="loginForm p-2">
         
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
@@ -59,13 +72,22 @@ export default function PasswordReset() {
         <input type="checkbox" onChange={() => setShowPass(!showPass)} className="form-check-input" id="exampleCheck1" />
         <label className="form-check-label" htmlFor="exampleCheck1">Show password</label>
       </div>
+      {passAlert?<span className="alert">Password do not match</span>:""}
       <button onClick={handleUpdatePassword} type="submit" className="btn btn-primary">SAVE</button>
-    </form>
-    ):(
+    </form>)
+    :(
       <div className="invalidDiv">
-      <h4>Invalid link</h4>
+      <h4>Invalid link 😱</h4>
       <button onClick={()=> navigate("/")} type="submit" className="btn btn-primary">Go to Login Page </button>
       <button onClick={()=> navigate("/verifyemail")} type="submit" className="btn btn-secondary">Verify email again</button>
+      </div>
+    )):(
+      <div className="validDiv">
+      <h4>Password updated Successfully ! 😎👍</h4>
+      <span>Please</span>
+      <button onClick={()=> navigate("/")} type="submit" className="loginbtn btn btn-primary">Login</button>
+      {/* <button onClick={()=> navigate("/verifyemail")} type="submit" className="btn btn-secondary">to enter the app</button> */}
+      <span>to enter the app</span>
       </div>
     )}
      </div>

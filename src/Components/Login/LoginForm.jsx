@@ -2,6 +2,7 @@ import "./loginForm.css";
 import {  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Loading from "../Loading/Loading"
 
 const LoginForm = () => {
 
@@ -14,6 +15,7 @@ const LoginForm = () => {
   const [forgetPassword,setForgetPassword] = useState(false);
   const [alert,setAlert]=useState(false);
   const [invalidCredentails,setInvalidCredentails] = useState(false);
+  const [loading,setLoading] = useState(false);
 
   const handleLogin=async(e)=>{
     e.preventDefault();
@@ -21,6 +23,7 @@ const LoginForm = () => {
     if(email.length===0 || password.length===0){
       setAlert(true)
     }else{
+      setLoading(true)
       setAlert(false)
       const data = await axios.post("https://auth-app-37.herokuapp.com/user/login",{
         username,
@@ -36,13 +39,15 @@ const LoginForm = () => {
         setEmail("");
         setPassword("");
         setShowPass(false);
+        setLoading(false)
       }else{
         setForgetPassword(true)
         setInvalidCredentails(true)
       }
     }
     }
-  }
+  } 
+
 
     return (
       <div className="parentContainer">
@@ -63,7 +68,8 @@ const LoginForm = () => {
         {alert?<span className="alert">Please enter all details</span>:""}
         {invalidCredentails?<span className="alert">Invalid credentials</span>:""}
         <div className="buttons">
-        <button onClick={handleLogin} className="btn btn-success">Log In</button>
+        
+        <button onClick={handleLogin} className="btn btn-success">{loading?<Loading/>:"Log In"}</button>
         {forgetPassword ? (<button onClick={()=> navigate("/verifyemail")} size="sm" className="forgotPassword btn btn-danger ">Forgot Password ?</button>):""}
         <button onClick={()=> navigate("/sign-up")} size="sm" className="signup btn btn-outline-primary">Sign Up</button>
         </div>
