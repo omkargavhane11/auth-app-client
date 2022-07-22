@@ -1,0 +1,15 @@
+.navbar{
+    height:10vh;
+    padding: 10px 10px;
+}
+.homeLogout{
+    margin-left: auto;
+}
+.homeBody{
+    height:89vh;
+    /* scrollbar:auto; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;    
+    margin-top:100px;
+}
