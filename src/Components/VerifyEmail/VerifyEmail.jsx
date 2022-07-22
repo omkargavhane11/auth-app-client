@@ -12,7 +12,7 @@ const VerifyEmail = () => {
   const handleVerifyEmail=async (e) => {
 
     e.preventDefault();
-    if(!email.length===0){
+    if(email.length !==0 ){
       const checkEmail = await axios.post(`https://auth-app-37.herokuapp.com/user/verifyemail/${email}`);
       if(checkEmail.data.msg === "success"){
         setUserVerified(true)
@@ -20,8 +20,6 @@ const VerifyEmail = () => {
     }else{
       setAlert(true);
     }
-    
-
   }
 
     return (
@@ -34,7 +32,7 @@ const VerifyEmail = () => {
           <input onChange={(e)=> setEmail(e.target.value)} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
         </div>
         {alert?<span className="alert">Please enter valid email address</span>:""}
-        <button onClick={handleVerifyEmail} type="submit" className="btn btn-primary">Submit</button>
+        <button onClick={handleVerifyEmail} className="btn btn-primary">Submit</button>
         <button onClick={()=> navigate("/")} size="sm" style={{marginTop:"10px"}} className="signup btn btn-outline-primary">Go to Login</button>
       </form>)
       :(
