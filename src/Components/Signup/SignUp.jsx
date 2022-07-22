@@ -19,7 +19,7 @@ export default function SignUp() {
         if(email.length===0 || password.length===0){
           setAlert(true);
         }else{
-          const data = await axios.post("http://localhost:8080/user/signup",{
+          const data = await axios.post("/user/signup",{
             username,
             email,
             password

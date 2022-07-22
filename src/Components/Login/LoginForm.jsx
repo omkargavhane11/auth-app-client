@@ -22,7 +22,7 @@ const LoginForm = () => {
       setAlert(true)
     }else{
       setAlert(false)
-      const data = await axios.post("http://localhost:8080/user/login",{
+      const data = await axios.post("/user/login",{
         username,
         email,
         password

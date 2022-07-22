@@ -16,7 +16,7 @@ export default function PasswordReset() {
   useEffect(() => {
     async function checkLink(){
       try{
-        const checkToken = await axios.post(`http://localhost:8080/user/checkToken/${uniqueURL}`);
+        const checkToken = await axios.post(`/user/checkToken/${uniqueURL}`);
         if(checkToken.data.msg==="valid"){
           setIslinkValid(true);
         }else if(checkToken.data.msg==="invalid"){
@@ -34,7 +34,7 @@ export default function PasswordReset() {
 
   const handleUpdatePassword =async()=>{
     try{
-      await axios.put(`http://localhost:8080/user/password-reset/${uniqueURL}`,password)
+      await axios.put(`/user/password-reset/${uniqueURL}`,password)
     }catch(err){
       console.log(err.message);
     }

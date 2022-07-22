@@ -13,7 +13,7 @@ const VerifyEmail = () => {
 
     e.preventDefault();
     if(!email.length===0){
-      const checkEmail = await axios.post(`http://localhost:8080/user/verifyemail/${email}`);
+      const checkEmail = await axios.post(`/user/verifyemail/${email}`);
       if(checkEmail.data.msg === "success"){
         setUserVerified(true)
       }
