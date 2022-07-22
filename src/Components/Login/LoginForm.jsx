@@ -22,7 +22,7 @@ const LoginForm = () => {
       setAlert(true)
     }else{
       setAlert(false)
-      const data = await axios.post("/user/login",{
+      const data = await axios.post("https://auth-app-37.herokuapp.com/user/login",{
         username,
         email,
         password

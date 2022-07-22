@@ -19,7 +19,7 @@ export default function SignUp() {
         if(email.length===0 || password.length===0){
           setAlert(true);
         }else{
-          const data = await axios.post("/user/signup",{
+          const data = await axios.post("https://auth-app-37.herokuapp.com/user/signup",{
             username,
             email,
             password
