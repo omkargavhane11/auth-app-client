@@ -6,7 +6,7 @@
     margin-left: auto;
 }
 .homeBody{
-    height:89vh;
+    /* height:89vh; */
     /* scrollbar:auto; */
     display: flex;
     /* align-items: center; */
