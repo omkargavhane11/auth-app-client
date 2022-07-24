@@ -5,6 +5,7 @@ import PasswordReset from './Components/PasswordReset/PasswordReset';
 import SignUp from './Components/Signup/SignUp';
 import VerifyEmail from './Components/VerifyEmail/VerifyEmail';
 import Home from './Components/HomePage/Home';
+import Redirect from './Components/Redirect/Redirect';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/verifyemail" element={<VerifyEmail />} />
         <Route path="/password-reset/:uniqueURL" element={<PasswordReset />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/:shortid" element={<Redirect />} />
       </Routes>
 
     </div>
