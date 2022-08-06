@@ -9,4 +9,15 @@
     padding:15px;
     display: flex;
     flex-direction: column;
+    /* max-width: 80%; */
+}
+.dashboard{
+    text-decoration: none;   
+    color:black;
+}
+.shrink{
+    margin-right: 100px;
+}
+.inputWithButton{
+    margin: 20px 0px;
 }

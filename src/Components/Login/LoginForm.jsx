@@ -43,6 +43,7 @@ const LoginForm = () => {
       }else{
         setForgetPassword(true)
         setInvalidCredentails(true)
+        setLoading(false)
       }
     }
     }

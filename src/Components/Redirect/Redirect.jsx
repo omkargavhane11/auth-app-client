@@ -9,7 +9,13 @@ export default function Redirect() {
     useEffect(() => {
        async function getFullUrl(){
         const urlData = await axios.get(`https://auth-app-37.herokuapp.com/shortUrl/${shortid}`);
-        window.location.replace(`https://${urlData.data.data}`)
+
+        if(urlData.data.data.fullUrl.includes("https://")){
+          window.location.replace(`${urlData.data.data.fullUrl}`)
+        }else{
+          window.location.replace(`https://${urlData.data.data.fullUrl}`);
+        } 
+        console.log(urlData.data.data.fullUrl);
        }
       getFullUrl();
     }, []);

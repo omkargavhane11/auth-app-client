@@ -1,15 +1,63 @@
+*{
+  margin:0;
+  padding:0;
+}
 .App {
-  /* text-align: center; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   height: 100vh;
   width: 100vw;
+}
+.homeBody{
+  margin:0;
+  padding:0;
 }
 .loginForm{
   background-color:rgb(197, 227, 248);
   min-width:350px;
   border-radius: 10px;
 }
+.inputWithButton{
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  /* justify-content: center; */
+}
+.filters{
+  display: flex;
+  flex-direction: column;
+  gap:6px;
+}
+.search{
+  max-width: 300px;
+}
+.table{
+  /* max-width: 100vw !important; */
+  /* display: flex; */
+  table-layout: fixed; 
+  /* width: 100% */
+  /* flex-wrap: wrap; */
+  /* overflow-x:auto; */
+}
+.navbar{
+  background-color: antiquewhite;
+}
+.table th{
+ text-align: center;
+ justify-content: center;
+}
+.table td{
+  text-align: center;
+ }
+.table-body tr td{
+  word-wrap: break-word;
+}
+.svg_delete{
+  color:red;
+}
 
+@media only screen and (max-width:"398px") {
+  .date_filter{
+    display: flex;
+    flex-direction: column;
+  }
+} 
 
