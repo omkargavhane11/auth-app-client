@@ -40,6 +40,10 @@
 .navbar{
   background-color: antiquewhite;
 }
+.table tbody tr td:nth-child(1) {
+  /* background: red; */
+  max-width: 300px;
+}
 .table th{
  text-align: center;
  justify-content: center;
