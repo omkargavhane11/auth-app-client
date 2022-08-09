@@ -44,7 +44,7 @@ export default function SignUp() {
   return (
     <div className="parentContainer">
       <div className="childContainer">
-        {signedUp ?(
+        {!signedUp ?(
     <form className="loginForm p-2 br-4">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Username <span className="astrick">*</span></label>
